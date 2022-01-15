@@ -1,0 +1,61 @@
+<% layout('layout/boilerplate.ejs') %>
+<div class="container">
+    <div class="row mb-5">
+        <div class="col-md-12 col-lg-6 offset-lg-3">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h2 class="text-center text-primary">CLUB</h2>
+                        <form action="/clubs" method="post" class='validate-form' novalidate enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label class="form-label" for="title">CLUB NAME</label>
+                                <input class="form-control" type="text" name="clubs[title]" autofocus id="title" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="formFileMultiple" class="form-label">CLUB IMAGES</label>
+                                <input class="form-control" type="file"   name="image" id="formFileMultiple" multiple>   
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="desc">DESCRIPTION</label>
+                                <textarea class="form-control" name="clubs[description]" id="desc" cols="6" rows="6" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="form-label" desc="flink">FACEBOOK LINK</label>
+                                <input type="text" class="form-control" name="clubs[flink]" id="flink" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="form-label" desc="ilink">INSTAGRAM LINK</label>
+                                <input type="text" class="form-control" name="clubs[ilink]" id="ilink" required>
+                            </div>
+                            <h4 class="text-center text-primary">FACULTY INCHARGE</h4>
+                            <div class="mb-3">
+                                <label class="form-label" for="faculty"> NAME</label>
+                                <input class="form-control" type="text" name="clubs[facultyName]" id="faculty" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="number"> NUMBER</label>
+                                <input class="form-control" type="phone" name="clubs[facultyNumber]" id="number" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="email">EMAIL</label>
+                                <input class="form-control" type="email" name="clubs[facultyMail]" id="email" required>
+                            </div>
+                            <h4 class="text-center text-primary">STUDENT COORDINATOR</h4>
+                            <div class="mb-3">
+                                <label class="form-label" for="stuName">NAME</label>
+                                <input class="form-control" type="text" name="clubs[studentName]" id="stuName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="num">NUMBER</label>
+                                <input class="form-control" type="phone" name="clubs[studentNumber]" id="num" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="email">EMAIL</label>
+                                <input class="form-control" type="text" name="clubs[studentMail]" id="email" required>
+                            </div>
+                            <button class="btn btn-primary">REGISTER CLUB</button>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<% layout('layout/boilerplate.ejs') %>
+
+<div class="row">
+    <div class="col-md-12 col-lg-6 offset-lg-3">
+        <div class="card shadow">
+            <div class="card-body">
+                <h1 class="text-center text-primary display-3">FEEDBACK FORM</h1>
+                <form action="/feedback/<%=id%>" method="post" class="validate-form" novalidate>
+                    <div class="mb-3">
+                            <label for="feed" class="form-label">FEEDBACK</label>
+                            <textarea name="body" id="feed" class="form-control" cols="8" rows="8" required></textarea>
+                    </div>
+                    <button class="btn btn-primary">SUBMIT</button>
+                </form>
+            </div>
+        </div>    
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<% layout('layout/boilerplate.ejs') %>
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-md-12 col-lg-6 offset-lg-3">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h2 class="text-center text-primary">SYMPOSIUM</h2>
+                    <form action="/symposium/<%=id%>" method="post" novalidate class="validate-form" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label class="form-label" for="title">SYMPOSIUM NAME</label>
+                            <input class="form-control" type="text" name="symp[title]" autofocus id="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="image">SYMPOSIUM IMAGE</label>
+                            <input class="form-control" type="file" name="image" id="image" multiple required>
+                        </div>
+                        <div class="mb-2">
+                            <label for="mode" class="form-label">MODE OF SYMPOSIM</label>
+                            <select name="symp[mode]" id="mode" required>
+                                <option value="online" selected>ONLINE</option>
+                                <option value="offline">OFFLINE</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="duration">DURATION OF SYMPOSIUM</label>
+                            <input class ="form-control" type="text" name="symp[duration]" id="duration" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="desc">DESCRIPTION</label>
+                            <textarea class="form-control" name="symp[description]" id="desc" cols="5" rows="5" required></textarea>
+                        </div>  
+                        <button class="btn btn-primary">REGISTER SYMPOSIUM</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

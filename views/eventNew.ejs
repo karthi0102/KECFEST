@@ -1,0 +1,47 @@
+<% layout('layout/boilerplate.ejs') %>
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-md-12 col-lg-6 offset-lg-3">
+                <div class="card shadow">
+                        <div class="card-body">
+                            <h2 class="text-center text-primary">ADD EVENT</h2>
+                            <form action="/events/<%=id%>" method="post"  novalidate class="validate-form" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <label for="title" class="form-label">EVENT NAME</label>
+                                    <input class="form-control" type="text" name="event[title]" autofocus id="title" required>
+                                </div>
+                                <div class="mb-3">
+                                        <label for="formFileMultiple" class="form-label">EVENT IAMGE</label>
+                                        <input class="form-control" name="image" type="file" id="formFileMultiple" multiple required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="rule" class="form-label">RULES</label>
+                                    <textarea class="form-control" name="event[rules]" id="rule" cols="10" rows="10" re ></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mode" class="form-label">SKILL</label>
+                                    <select name="event[skill]" id="mode" required>
+                                        <option value="Technical" selected>Technical</option>
+                                        <option value="Non-technical">Non-Technical</option>
+                                    </select>
+                                </div>
+                                <h4 class="text-center text-primary">STUDENT COORDINATOR</h4>
+                            <div class="mb-3">
+                                <label class="form-label" for="stuName">NAME</label>
+                                <input class="form-control" type="text" name="event[studentName]" id="stuName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="num">NUMBER</label>
+                                <input class="form-control" type="phone" name="event[studentNumber]" id="num" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="email">EMAIL</label>
+                                <input class="form-control" type="text" name="event[studentMail]" id="email" required>
+                            </div>
+                                <button class="btn btn-primary">ADD EVENT</button>
+                            </form>
+                        </div>
+                </div>
+        </div>
+    </div>
+</div>

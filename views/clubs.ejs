@@ -1,0 +1,27 @@
+<% layout('layout/boilerplate.ejs') %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="stylesheets/clubs.css">
+<link rel="stylesheet" href="/stylesheets/fbutton.css">
+
+<div class="team-boxed">
+    <div class="row people">
+        <%for(let club of clubs) {%>
+            <div class=" col-sm-12 col-md-6 col-lg-4 item">
+                <div class="box"><img class="rounded-circle" src="<%=club.image[0].url%>" style="height: 100px;">
+                    <h3 class="name"><%=club.title%></h3>
+                    <p class="title">CLUB</p>
+                    <p class="description"><%=club.description.substring(0,150)%>...</p>
+                    <a href="/clubs/<%=club._id%>">VIEW <%=club.title%></a>
+                    <div class="social"><a href="<%=club.flink%>"><i class="fa fa-facebook-official"></i></a><a href="<%=club.ilink%>"><i class="fa fa-instagram"></i></a></div>
+        </div>
+        </div>
+        <%}%>
+</div>
+</div>
+
+<a href="/clubs/new" class="float btn-primary" style="bottom:120px;">
+    <i class="fa fa-plus my-float" ></i>
+</a>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>

@@ -1,0 +1,34 @@
+<% layout('layout/boilerplate.ejs') %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="stylesheets/clubs.css">
+
+<% if(!symposium.length) {%>
+    <div class="container gif">
+        <div class="row">
+            <div class="col-md-12 col-lg-6 offset-lg-3">
+                <img src="https://i.gifer.com/P4id.gif" alt="">
+            </div>
+        </div>
+        
+    </div>
+<%}%>
+
+<div class="team-boxed">
+    <div class="row people">
+        <%for(let symp of symposium) {%>
+                <div class="col-md-12 col-lg-4 item">
+                    <div class="box"><img class="rounded-circle" src="<%=symp.image[0].url%>" style="height: 100px;">
+                        <h3 class="name"><%=symp.title%></h3>
+                        <p class="title">SYMPOSIUM</p>
+                        <p class="description"><%=symp.description.substring(0,150)%>...</p>
+                        <a href="/symposium/<%=symp._id%>">VIEW <%=symp.title%></a>
+                       
+                    </div>
+       
+        <%}%>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>

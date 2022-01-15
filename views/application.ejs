@@ -1,0 +1,88 @@
+<% layout('layout/boilerplate.ejs') %>
+<style>
+  
+ td{
+     border:2px solid white;
+     padding: 10px 10px 10px 10px;
+ }
+ .new{
+     display: none;
+ }
+ @media (max-width:1000px) {
+        .button{
+            display: none;
+        }
+    }
+</style>
+<h1 class="text-center display-2"><%=event.title%></h1>
+<div class="container cardFormat">
+    <div class="row">
+        
+        <% for(let form of event.forms){%>
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card shadow my-3 mx-3 bg-primary">
+                <div class="card-body text-primary">
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item  bg-primary text-white"><%=form.username%></li>
+                          <li class="list-group-item bg-primary text-white"><%=form.roll%></li>
+                          <li class="list-group-item bg-primary text-white"><%=form.email%></li>
+                          <li class="list-group-item bg-primary text-white"><%=form.phone%></li>
+                          <li class="list-group-item bg-primary text-white"><%=form.department%></li>
+                        </ul>
+                      </div>
+            </div>
+        </div>
+        <%}%>
+    </div>
+</div>
+
+
+
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-md-12 col-lg-6 offset-lg-3">
+
+    <table class="bg-primary">
+    <tr class="text-white">
+        <td class="text-center">NAME</td>
+        <td class="text-center">ROLL NO</td>
+        <td class="text-center">EMAIL</td>
+        <td class="text-center">MOBILE NO</td>
+        <td class="text-center">DEPARTMENT</td>
+    </tr>
+    <% for(let form of event.forms){%>
+            <tr class="text-white">
+                <td><%=form.username%></td>
+                <td><%=form.roll%></td>
+                <td><%=form.email%></td>
+                <td><%=form.phone%></td>
+                <td><%=form.department%></td>
+            </tr>
+        <%}%>
+    </table>
+</div>
+</div>
+</div>
+<div class="container button">
+    <div class="row">
+        <div class="col-6 offset-3 d-flex justify-content-center">
+            <button class="btn btn-primary  button my-3"><span id="format">VIEW IN TABLE FORMAT</span> </button>
+        </div>
+    </div>
+</div>
+<script>
+    const card =document.querySelector('.cardFormat')
+    const btn = document.querySelector('.button')
+    const table = document.querySelector('table')
+    const format = document.getElementById('format')
+    table.classList.add('new')
+    btn.addEventListener('click',()=>{
+        table.classList.toggle('new')
+        card.classList.toggle('new')
+        if(format.textContent=="VIEW IN TABLE FORMAT"){
+            format.textContent="VIEW IN CARD FORMAT"
+        }else if(format.textContent=="VIEW IN CARD FORMAT"){
+            format.textContent="VIEW IN TABLE FORMAT"
+        }
+    })
+</script>

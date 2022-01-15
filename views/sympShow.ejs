@@ -1,0 +1,115 @@
+<% layout('layout/boilerplate.ejs') %>
+<link rel="stylesheet" href="/stylesheets/application.css">
+<div class="row mb-3">
+  <div class="col-12 ">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <% symp.image.forEach((img,i) => { %>
+        <div class="carousel-item <%= i===0 ?'active' :'' %>">
+          <img src="<%= img.url %>" class="d-block w-100" alt="...">
+        </div>
+        <% }) %>
+      </div>
+      <% if( symp.image.length > 1){ %> 
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+      <%}%> 
+    </div>
+  </div>
+</div>
+    <div class="row mb-5">
+        <div class="col-md-6 offset-md-3">
+          <h1 class="card-title text-center display-2"><%=symp.title%></h1>
+           </div>
+           <div class="col-md-12 col-lg-6">
+             <div class="card shadow">
+               <div class="card-body">
+                      <div class="card-body">
+                        <p class=" card-text font-monospace"><span class="text-primary display-6">DESCRIPTION AND GUIDELINES:</span> <br><%=symp.description%></p>
+                      </div>
+               </div>
+             </div>
+           </div>
+           <div class="col-md-12 col-lg-6 d-flex justify-content-center">
+            <div class="card shadow">
+              <div class="card-body">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><h4>DURATION OF EVENT: </h4> <%=symp.duration%></li>
+                  <li class="list-group-item"><h4>MODE OF EVENT:</h4><span class="text-uppercase"><%=symp.mode%></span></li>
+                  <li class="list-group-item"><h4>CONDUCTED BY :</h4><a href="/clubs/<%=symp.club._id%>"><h5 class="text-primary"><%=symp.club.title%></h5></a></li>
+                </ul>
+                <div class="card-body ml-4">
+                <% if(currentUser && symp.author.equals(currentUser._id)){%>
+                  <a href="/events/<%=symp._id%>/new" class="btn btn-primary">ADD EVENT</a>
+                  <form class="d-inline" action="/symposium/<%=symp._id%>?_method=DELETE" method="POST">
+                      <button class="btn btn-danger">Delete</button>
+                  </form>
+                  <a href="/feedback/<%=symp._id%>/show">
+                  <div class="card bg-c-blue order-card mt-3">
+                    <div class="card-block">
+                        <h6 class="m-b-20">FEEDBACKS</h6>
+                        <h2 class="text-right"><span><%=symp.feeds.length%></span></h2>
+                    </div>
+                  </div>
+                </a>
+                  <%}else{%>
+                        <a href="/feedback/<%=symp.id%>" class="btn btn-primary">FEEDBACK</a>
+                    <%}%>
+                </div>
+              </div>
+            </div>
+           </div>
+           <% if(symp.events.length){%>
+            <h1 class="text-center text-primary display-3 mt-5">EVENTS</h1>
+            <% for(let event of symp.events) {%>
+              
+             <div class="row mt-5">
+               <div class="col-md-12 col-lg-6">
+                 <div class="card shadow">
+                   <img src="<%=event.image[0].url%>"   class="card-img-top" style="height: 300px;" alt="">
+                   <div class="card-body">
+                         <h2 class="text-primary display-3 text-center"><%=event.title%></h2>
+                         <p class="card-text font-monospace"><span class="text-primary">RULES:</span><br><%=event.rules%></p>
+                   </div>
+                 </div>
+               </div>
+               <div class="col-md-12 col-lg-6">
+                 <div class="card shadow">
+                   <div class="card-body">
+                    <h5 class="text-uppercase"> <span class="text-primary"> SKILL:</span><%=event.skill%></h5>
+                    <h5 class="text-center text-primary">STUDENT INCHARGE</h3>
+                    <h5 class="text-uppercase"><span class="text-primary">NAME:</span><%=event.studentName%><h5>
+                    <hr>
+                    <p><span class="text-primary">MOBILE No:</span><%=event.studentNumber%></p>
+                    <hr>
+                    <p><span class="text-primary ">Email:</span><%=event.studentMail%></p>
+                    <% if(currentUser && symp.author.equals(currentUser._id)){%>
+              
+                   <form class="d-inline" action="/events/<%=event._id%>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger">Delete</button>
+                    <a href="/forms/<%=event._id%>">
+                      <div class="card bg-c-blue order-card mt-3">
+                          <div class="card-block">
+                              <h6 class="m-b-20">STUDENTS APLLIED</h6>
+                              <h2 class="text-right"><span><%=event.forms.length%></span></h2>
+                             
+                          </div>
+                        </a>
+                  </div>
+                </form>
+                    <%}else{%>
+                      <a href="/events/<%=event._id%>/register/" class="btn btn-primary new">REGISTER</a>
+                      <%}%>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <hr class=mt-4>
+           <%}%>
+           <%}%>

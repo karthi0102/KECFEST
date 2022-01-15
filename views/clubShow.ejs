@@ -1,0 +1,104 @@
+<% layout('layout/boilerplate.ejs') %>
+<style>
+  marquee a {
+    color: white;
+    text-decoration: none;
+  }
+  marquee{
+    height: 50px;
+    margin-bottom: 20px;
+    letter-spacing :3px;
+  }
+</style>
+<link rel="stylesheet" href="/stylesheets/member.css">
+<% if(club.symposium.length){ %> 
+  <% for(let symp of club.symposium){ %> 
+<marquee behavior="scroll" direction="left" scrollamount="12" class="bg-primary text-white d-flex align-items-center"><h2><a href="/symposium/<%=symp._id%>" >Hey there! <%=symp.title%> </a>is live now ,Register ASAP!! </h2></marquee>
+<%}%>
+<%}%>
+
+<div id="carouselExampleControls" class="carousel slide mb-3" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <% club.image.forEach((img,i) => { %>
+    <div class="carousel-item <%= i===0 ?'active' :'' %>">
+      <img src="<%= img.url %>" class="d-block w-100" alt="..." style="height: 450px;">
+    </div>
+    <% }) %>
+  </div>
+  <% if( club.image.length > 1){ %> 
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  <%}%> 
+</div>
+
+    <div class="row mb-5">
+        <div class="col-lg-6 offset-md-3">
+          <h2 class="text-center display-3 card-title"><%=club.title%></h2>
+          </div>
+          <div class="col-lg-12">
+            <div class="card shadow">
+              <div class="card-body">
+                     <p class="font-monospace card-text"><span class="text-center text-primary display-5">DESCRIPTION</span><br><%=club.description%></p>
+                     <div class="card-body ">
+                     <% if(currentUser && club.author.equals(currentUser._id)){%>
+                      <div class="card-body">
+                         <a href="/clubs/<%=club._id%>/edit" class="card-link btn btn-info p-1">Edit</a>
+                         <form class="d-inline" action="/clubs/<%=club._id%>?_method=DELETE" method="POST">
+                             <button class="btn btn-danger p-1">Delete</button>
+                         </form>
+                         <a href="/symposium/<%=club._id%>/new" class="card-link btn btn-success p-1">SYMPOSIUM</a>
+                         <a href="/members/<%=club._id%>" class="btn btn-warning p-1">MEMBERS</a>
+                       </div>
+                       <%}%>
+                      </div>
+                </div>
+                </div>
+          </div>
+          <div class="col-md-12 col-lg-6 mt-3">
+              <div class="card shadow">
+                <div class="card-body">
+                  <h3 class="text-center text-primary">FACULTY INCHARGE</h3>
+                  <h5>NAME:<%=club.facultyName%></h5>
+                  <hr>
+                  <h5>MOBILE No:<%=club.facultyNumber%></h5>
+                  <hr>
+                  <h5>Email:<%=club.facultyMail%></h5>
+                </div>
+              </div>
+          </div>
+          <div class="col-md-12 col-lg-6 mt-3">
+            <div class="card shadow">
+              <div class="card-body">
+                <h3 class="text-center text-primary">STUDENT INCHARGE</h3>
+                <h5>NAME:<%=club.studentName%></h5>
+                <hr>
+                <h5>MOBILE No:<%=club.studentNumber%></h5>
+                <hr>
+                <h5>Email:<%=club.studentMail%></h5>
+              </div>
+            </div>
+          </div>
+</div>
+       
+<% if(club.members.length){ %>
+  <div class="row text-center member">
+    <h2 class="text-center text-white display-3 mb-3">CLUB MEMBERS</h2>
+    <% for(let member of club.members){ %>
+      <div class=" col-md-12 col-lg-4 pl-2 pb-3">
+      <div class="bg-white rounded shadow-sm py-5 px-4"><img src="<%=member.image[0].url%>" alt="" width="100" style="height: 80px;" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+        <h5 class="mb-0"><%=member.name%></h5><span class="small text-uppercase text-muted"><%=member.position%></span><br>
+        <span class="small text-uppercase text-muted"><%=member.department%></span>
+       
+    </div>
+  </div>
+      <% } %> 
+  </div>
+  <% } %> 
+
+  <script src="/javascripts/jquery.js"></script>

@@ -1,0 +1,39 @@
+<% layout('layout/boilerplate.ejs') %>
+<div class="container">
+    <div class="row mb-5">
+        <div class="col-md-12 col-lg-6 offset-lg-3">
+            <div class="card shadow">
+                <div class="card-body">
+                <h3 class="text-center text-primary display-3">REGISTER <%=event.title%> EVENT</h3>
+                <form action="/register/<%=event._id%>/events" method="post" novalidate class="validate-form">
+                    <div class="mb-3">
+                        <label class="form-label" for="title">EVENT NAME</label>
+                        <input class="form-control" type="text" value="<%=event.title%>" name="forms[title]" id="title" readonly required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">USERNAME</label>
+                        <input class="form-control" type="text" value="<%=user.username%>" name="forms[username]" id="username" autofocus required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="roll" class="form-label">ROLL NO</label>
+                        <input class="form-control" type="text" value="<%=user.roll%>" name="forms[roll]" id="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dept" class="form-label">DEPARTMENT</label>
+                        <input class="form-control" type="text" value="<%=user.department%>" name="forms[department]" id="dept" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">MOBILE NUMBER</label>
+                        <input class="form-control" type="phone" value="<%=user.phone%>" name="forms[phone]" id="phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">EMAIL</label>
+                        <input class="form-control" type="email" value="<%=user.email%>" name="forms[email]" id="email" required>
+                    </div>
+                    <button class="btn btn-primary">REGISTER <%=event.title%></button>
+                </form>
+        </div>
+    </div>
+ </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<% layout('layout/boilerplate.ejs') %>
+<div class="container">
+    <div class="row mb-5">
+        <div class="col-6 offset-3">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h2 class="text-center text-primary">CLUB REGISTRATION</h2>
+                        <form action="/clubs/<%=club._id%>/edit?_method=PUT" method="post" novalidate class="validate-form">
+                            <div class="mb-3">
+                                <label class="form-label" for="title">CLUB NAME</label>
+                                <input class="form-control" type="text" name="clubs[title]" value="<%=club.title%>" autofocus id="title" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="desc">DESCRIPTION</label>
+                                <textarea class="form-control" name="clubs[description]" id="desc" cols="10" rows="10" required><%=club.description%></textarea>
+                            </div>
+                            <h4 class="text-center text-primary">FACULTY INCHARGE</h4>
+                            <div class="mb-3">
+                                <label class="form-label" for="faculty"> NAME</label>
+                                <input class="form-control" type="text" name="clubs[facultyName]" value="<%=club.facultyName%>" id="faculty" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="number"> NUMBER</label>
+                                <input class="form-control" type="phone" name="clubs[facultyNumber]" value="<%=club.facultyNumber%>" id="number" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="email">EMAIL</label>
+                                <input class="form-control" type="email" name="clubs[facultyMail]" value="<%=club.facultyMail%>" id="email" required>
+                            </div>
+                            <h4 class="text-center text-primary">STUDENT COORDINATOR</h4>
+                            <div class="mb-3">
+                                <label class="form-label" for="stuName">NAME</label>
+                                <input class="form-control" type="text" name="clubs[studentName]" value="<%=club.studentName%>" id="stuName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="num">NUMBER</label>
+                                <input class="form-control" type="phone" name="clubs[studentNumber]" value="<%=club.studentNumber%>" id="num" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="email">EMAIL</label>
+                                <input class="form-control" type="text" name="clubs[studentMail]" value="<%=club.studentMail%>" id="email" required>
+                            </div>
+                            
+                            <button class="btn btn-primary">REGISTER CLUB</button>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

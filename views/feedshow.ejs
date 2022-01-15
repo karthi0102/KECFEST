@@ -1,0 +1,21 @@
+<% layout('layout/boilerplate.ejs') %>
+
+<div class="row">
+    <h2 class="text-center mb-3"><%=symp.title%> FEEDBACKS</h2>
+    <%for(let feed of symp.feeds){%>
+            <div class="col-lg-4">
+                <div class="card shadow bg-primary">
+                    <div class="card-body">
+                        <figure>
+                            <blockquote class="blockquote">
+                              <p class="text-white"><%=feed.body%></p>
+                            </blockquote>
+                            <figcaption class="blockquote-footer text-white">
+                             <%=feed.author.username%><cite title="Source Title"> <%=feed.author.roll%></cite>
+                            </figcaption>
+                          </figure>
+                    </div>
+                </div>
+            </div>
+    <%}%>
+</div>

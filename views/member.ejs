@@ -1,0 +1,30 @@
+<% layout('layout/boilerplate.ejs') %>
+
+<div class="row">
+    <div class="col-md-12 col-lg-6 offset-lg-3">
+        <div class="card shadow">
+            <div class="card-body">
+                <h2 class="text-center text-primary">STUDNET FORM</h2>
+                <form action=""method="POST" class="validate-form" novalidate enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">NAME</label>
+                        <input type="text" name="members[name]" class="form-control" id="name" autofocus required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="position" class="form-label">POSITION</label>
+                        <input type="text" name="members[position]" class="form-control" id="position"  required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dept" class="form-label">DEPARTMENT</label>
+                        <input type="text" name="members[department]" class="form-control" id="dept" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">IMAGE</label>
+                        <input type="file" name="image" class="form-control" id="image"  required multiple>
+                    </div>
+                    <button class="btn btn-primary">SUBMIT</button>
+                </form>
+            </div>
+        </div>      
+    </div>
+</div>

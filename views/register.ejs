@@ -1,0 +1,57 @@
+<% layout('layout/boilerplate.ejs') %>
+<style>
+    footer{
+        display: none;
+    }
+    .navbar{
+        background-color: #DA22FF!important;
+    }
+</style>
+<link rel="stylesheet" href="stylesheets/register.css">
+<div class="form">
+<div class="container ">
+    <div class="title">Registration</div>
+    <div class="content">
+      <form action="/register" method="post" novalidate class="validate-form">
+        <div class="user-details">
+          <div class="input-box">
+            <label class="form-label" for="name">USERNAME</label>
+            <input class="form-control" type="text" name="username" autofocus id="name" required>
+          </div>
+          <div class="input-box">
+            <label class="form-label" for="roll">ROLLNO</label>
+            <input class="form-control" type="text" name="roll" id="roll" required>
+          </div>
+          <div class="input-box">
+            <label class="form-label" for="num">MOBILE NUMBER</label>
+                        <input class="form-control" type="phone" name="phone" id="num" required>
+          </div>
+          <div class="input-box">
+            <label class="form-label" for="email">EMAIL-ID</label>
+                        <input class="form-control" type="email" name="email" id="email" required>
+          </div>
+          <div class="input-box">
+            <label class="form-label" for="dept">DEPARTMENT</label>
+            <input class="form-control" type="text" name="department" id="dept" required>
+          </div>
+          <div class="input-box">
+            <label class="form-label" for="batch">COURSE-DURATION</label>
+            <input class="form-control" placeholder="2020-2024" type="text" name="batch" id="batch" required>
+          </div>
+          <div class="input-box">
+            <label class="form-label" for="pass">PASSWORD</label>
+            <input class="form-control"  type="password" name="password" id="pass" required>
+          </div>
+          <div class="input-box">
+            <label class="form-label" for="confirm">CONFIRM PASSWORD</label>
+            <input class="form-control"  type="password" name="confirm" id="confirm" required>
+          </div>
+        </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
