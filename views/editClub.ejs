@@ -14,6 +14,14 @@
                                 <label class="form-label" for="desc">DESCRIPTION</label>
                                 <textarea class="form-control" name="clubs[description]" id="desc" cols="10" rows="10" required><%=club.description%></textarea>
                             </div>
+                            <div class="mb-3">
+                                <label for="form-label" desc="flink">FACEBOOK LINK</label>
+                                <input type="text" class="form-control" name="clubs[flink]" id="flink" value="<%=club.flink%>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="form-label" desc="ilink">INSTAGRAM LINK</label>
+                                <input type="text" class="form-control" name="clubs[ilink]" value="<%=club.ilink%>" id="ilink" required>
+                            </div>
                             <h4 class="text-center text-primary">FACULTY INCHARGE</h4>
                             <div class="mb-3">
                                 <label class="form-label" for="faculty"> NAME</label>
