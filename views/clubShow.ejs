@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/stylesheets/member.css">
 <% if(club.symposium.length){ %> 
   <% for(let symp of club.symposium){ %> 
-<marquee behavior="scroll" direction="left" scrollamount="12" class="bg-primary text-white d-flex align-items-center"><h2><a href="/symposium/<%=symp._id%>" >Hey there! <%=symp.title%> </a>is live now ,Register ASAP!! </h2></marquee>
+<marquee behavior="scroll" direction="left" scrollamount="12" class="bg-primary text-white d-flex align-items-center"><h2>Hey there! <a href="/symposium/<%=symp._id%>" ><%=symp.title%> </a>is live now ,Register ASAP!! </h2></marquee>
 <%}%>
 <%}%>
 
