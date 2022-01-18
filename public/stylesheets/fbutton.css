@@ -19,3 +19,9 @@
     color:mintcream;
     opacity: 90%;
 }
+
+@media (max-width:1000px) {
+	.float{
+		bottom: 50px;
+	}
+}
