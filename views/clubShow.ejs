@@ -46,7 +46,7 @@
               <div class="card-body">
                      <p class="font-monospace card-text"><span class="text-center text-primary display-5">DESCRIPTION</span><br><%=club.description%></p>
                      <div class="card-body ">
-                     <% if(currentUser && club.author.equals(currentUser._id)){%>
+                     <% if(currentUser && club.author.equals(currentUser._id) || (club.studentMail === currentUser.email) ){%>
                       <div class="card-body">
                          <a href="/clubs/<%=club._id%>/edit" class="card-link btn btn-info p-1">Edit</a>
                          <form class="d-inline" action="/clubs/<%=club._id%>?_method=DELETE" method="POST">

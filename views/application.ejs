@@ -46,8 +46,9 @@
 <div class="container mb-5">
     <div class="row">
         <div class="col-md-12 col-lg-6 offset-lg-3">
-
-    <table class="bg-primary">
+<div id="invoice">
+    <table class="bg-primary"  >
+        <thead>
     <tr class="text-white">
         <td class="text-center">NAME</td>
         <td class="text-center">ROLL NO</td>
@@ -55,6 +56,7 @@
         <td class="text-center">MOBILE NO</td>
         <td class="text-center">DEPARTMENT</td>
     </tr>
+</thead>
     <% for(let form of event.forms){%>
             <tr class="text-white">
                 <td><%=form.username%></td>
@@ -68,6 +70,7 @@
 </div>
 </div>
 </div>
+</div>
 <% if(event.forms.length){%>
 <div class="container button">
     <div class="row">
@@ -77,7 +80,9 @@
     </div>
 </div>
 <% } %>
+<button id="download">download</button>
 <script>
+    const name='<%=event.title%>';
     const card =document.querySelector('.cardFormat')
     const btn = document.querySelector('.button')
     const table = document.querySelector('table')
@@ -92,6 +97,32 @@
             format.textContent="VIEW IN TABLE FORMAT"
         }
     })
-</script>
 
- 
+        window.onload = function () {
+    document.getElementById("download")
+        .addEventListener("click", () => {
+            const invoice = this.document.getElementById("invoice");
+            console.log(invoice);
+            console.log(window);
+            var opt = {
+                margin: 1,
+                filename:`${name}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf().from(invoice).set(opt).save();
+        })
+}
+
+function export_data(){
+    let data=document.getElementById('register_table');
+    var fp=XLSX.utils.table_to_book(data,{sheet:'event'});
+    XLSX.write(fp,{
+      bookType:'xlsx',
+      type:'base64'
+    });
+    XLSX.writeFile(fp, 'register.xlsx');
+  }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js" integrity="sha512-pdCVFUWsxl1A4g0uV6fyJ3nrnTGeWnZN2Tl/56j45UvZ1OMdm9CIbctuIHj+yBIRTUUyv6I9+OivXj4i0LPEYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
