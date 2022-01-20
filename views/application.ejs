@@ -1,6 +1,6 @@
 <% layout('layout/boilerplate.ejs') %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 <style>
-  
  td{
      border:2px solid white;
      padding: 10px 10px 10px 10px;
@@ -43,20 +43,20 @@
 
 <% } %>
 
-<div class="container mb-5">
+<div class="container mb-5" id="invoice">
     <div class="row">
         <div class="col-md-12 col-lg-6 offset-lg-3">
-<div id="invoice">
-    <table class="bg-primary"  >
-        <thead>
+
+    <table class="bg-primary" id="register_table" >
+    <thead>
     <tr class="text-white">
-        <td class="text-center">NAME</td>
-        <td class="text-center">ROLL NO</td>
-        <td class="text-center">EMAIL</td>
-        <td class="text-center">MOBILE NO</td>
-        <td class="text-center">DEPARTMENT</td>
+        <th class="text-center">NAME</th>
+        <th class="text-center">ROLL NO</th>
+        <th class="text-center">EMAIL</th>
+        <th class="text-center">MOBILE NO</th>
+        <th class="text-center">DEPARTMENT</th>
     </tr>
-</thead>
+    </thead>
     <% for(let form of event.forms){%>
             <tr class="text-white">
                 <td><%=form.username%></td>
@@ -67,26 +67,29 @@
             </tr>
         <%}%>
     </table>
+    </div>
 </div>
 </div>
-</div>
-<<<<<<< HEAD
-</div>
+
 <% if(event.forms.length){%>
 
 
-<div class="container button">
+<div class="button">
     <div class="row">
         <div class="col-6 offset-3 d-flex justify-content-center">
             <button class="btn btn-primary  button my-3"><span id="format">VIEW IN TABLE FORMAT</span> </button>
         </div>
     </div>
 </div>
+
 <% } %>
-
-<button id="download">download</button>
-
-
+<% if(event.forms.length){%>   
+        <div class="row">
+            <div class="col-6 offset-3 d-flex justify-content-center">
+                <button onclick="export_data()" class="btn btn-success">DOWNLOAD AS EXCEL</button>
+            </div>
+        </div>
+    <% } %>
 <script>
     const name='<%=event.title%>';
     const card =document.querySelector('.cardFormat')
@@ -103,24 +106,7 @@
             format.textContent="VIEW IN TABLE FORMAT"
         }
     })
-
-
-        window.onload = function () {
-    document.getElementById("download")
-        .addEventListener("click", () => {
-            const invoice = this.document.getElementById("invoice");
-            console.log(invoice);
-            console.log(window);
-            var opt = {
-                margin: 1,
-                filename:`${name}.pdf`,
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-            html2pdf().from(invoice).set(opt).save();
-        })
-}
+     
 
 function export_data(){
     let data=document.getElementById('register_table');
@@ -129,8 +115,8 @@ function export_data(){
       bookType:'xlsx',
       type:'base64'
     });
-    XLSX.writeFile(fp, 'register.xlsx');
+    XLSX.writeFile(fp, `${name}.xlsx`);
   }
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js" integrity="sha512-pdCVFUWsxl1A4g0uV6fyJ3nrnTGeWnZN2Tl/56j45UvZ1OMdm9CIbctuIHj+yBIRTUUyv6I9+OivXj4i0LPEYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   
 

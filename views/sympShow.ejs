@@ -115,10 +115,9 @@
            <%}%>
 
     
-           <script>
-             const counters = document.querySelectorAll('.value');
+<script>
+const counters = document.querySelectorAll('.value');
 const speed = 200;
-
 counters.forEach( counter => {
    const animate = () => {
       const value = +counter.getAttribute('akhi');
@@ -131,9 +130,9 @@ counters.forEach( counter => {
         }else{
           counter.innerText = value;
         }
-     
    }
    
    animate();
 });
-</script>
+
+           </script>
