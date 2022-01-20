@@ -14,6 +14,11 @@
         }
     }
 </style>
+
+<% if(!event.forms.length){%>
+    <h2 class="text-center text-primary mt-5">NO RESPONES TILL NOW</h2>
+<%}%>
+<% if(event.forms.length){%>
 <h1 class="text-center display-2"><%=event.title%></h1>
 <div class="container cardFormat">
     <div class="row">
@@ -36,7 +41,7 @@
     </div>
 </div>
 
-
+<% } %>
 
 <div class="container mb-5">
     <div class="row">
@@ -63,6 +68,7 @@
 </div>
 </div>
 </div>
+<% if(event.forms.length){%>
 <div class="container button">
     <div class="row">
         <div class="col-6 offset-3 d-flex justify-content-center">
@@ -70,6 +76,7 @@
         </div>
     </div>
 </div>
+<% } %>
 <script>
     const card =document.querySelector('.cardFormat')
     const btn = document.querySelector('.button')
@@ -86,3 +93,5 @@
         }
     })
 </script>
+
+ 

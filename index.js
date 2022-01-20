@@ -193,6 +193,7 @@ app.delete('/symposium/:id',isLoggedIn,async(req,res)=>{
     req.flash('success','Symposium has been deleted')
     res.redirect('/symposium')
 })
+
 app.get('/events/:id/new',isLoggedIn,(req,res)=>{
     const {id}=req.params;
     res.render('eventNew',{id})

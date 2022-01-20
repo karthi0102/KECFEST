@@ -54,7 +54,7 @@
                   <div class="card bg-c-blue order-card mt-3">
                     <div class="card-block">
                         <h6 class="m-b-20">FEEDBACKS</h6>
-                        <h2 class="text-right"><span><%=symp.feeds.length%></span></h2>
+                        <h2 class="text-right"><span class="value" akhi="<%=symp.feeds.length%>">0</span></h2>
                     </div>
                   </div>
                 </a>
@@ -97,7 +97,7 @@
                       <div class="card bg-c-blue order-card mt-3">
                           <div class="card-block">
                               <h6 class="m-b-20">STUDENTS APLLIED</h6>
-                              <h2 class="text-right"><span><%=event.forms.length%></span></h2>
+                              <h2 class="text-right"><span class="value" akhi="<%=event.forms.length%>">0</span></h2>
                              
                           </div>
                         </a>
@@ -113,3 +113,27 @@
              <hr class=mt-4>
            <%}%>
            <%}%>
+
+    
+           <script>
+             const counters = document.querySelectorAll('.value');
+const speed = 200;
+
+counters.forEach( counter => {
+   const animate = () => {
+      const value = +counter.getAttribute('akhi');
+      const data = +counter.innerText;
+     
+      const time = value / speed;
+     if(data < value) {
+          counter.innerText = Math.ceil(data + time);
+          setTimeout(animate, 1);
+        }else{
+          counter.innerText = value;
+        }
+     
+   }
+   
+   animate();
+});
+</script>
