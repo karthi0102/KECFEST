@@ -64,11 +64,13 @@
               <div class="card shadow">
                 <div class="card-body">
                   <h3 class="text-center text-primary">FACULTY INCHARGE</h3>
-                  <h5>NAME:<%=club.facultyName%></h5>
+                 
+                  <h5> <span class="text-primary"> NAME:</span><%=club.facultyName%></h5>
                   <hr>
-                  <h5>MOBILE No:<%=club.facultyNumber%></h5>
+                  <h5> <span class="text-primary">MOBILE No:</span> <%=club.facultyNumber%></h5>
                   <hr>
-                  <h5>Email:<%=club.facultyMail%></h5>
+                  <h5> <span class="text-primary">Email:</span> <%=club.facultyMail%></h5>
+              
                 </div>
               </div>
           </div>
@@ -76,11 +78,11 @@
             <div class="card shadow">
               <div class="card-body">
                 <h3 class="text-center text-primary">STUDENT INCHARGE</h3>
-                <h5>NAME:<%=club.studentName%></h5>
+                <h5> <span class="text-primary">NAME:</span><%=club.studentName%></h5>
                 <hr>
-                <h5>MOBILE No:<%=club.studentNumber%></h5>
+                <h5> <span class="text-primary">MOBILE No:</span><%=club.studentNumber%></h5>
                 <hr>
-                <h5>Email:<%=club.studentMail%></h5>
+                <h5> <span class="text-primary">Email:</span><%=club.studentMail%></h5>
               </div>
             </div>
           </div>
@@ -88,7 +90,7 @@
        
 <% if(club.members.length){ %>
   <div class="row text-center member">
-    <h2 class="text-center text-white display-3 mb-3">CLUB MEMBERS</h2>
+    <h1 class="text-center text-white display-5 mb-3">CLUB MEMBERS</h1>
     <% for(let member of club.members){ %>
       <div class=" col-md-12 col-lg-4 pl-2 pb-3">
       <div class="bg-white rounded shadow-sm py-5 px-4"><img src="<%=member.image[0].url%>" alt="" width="120" style="height: 80px;" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
