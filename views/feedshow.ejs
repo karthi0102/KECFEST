@@ -1,5 +1,13 @@
 <% layout('layout/boilerplate.ejs') %>
-
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+<style>
+    .animate__animated.animate__swing{
+        animation-duration:7s;
+    }
+</style>
 <% if(symp.feeds.length){ %> 
 <div class="row">
     <h2 class="text-center mb-3"><%=symp.title%> FEEDBACKS</h2>
@@ -21,5 +29,7 @@
     <%}%>
 </div>
 <% } else{%>
-    <h1 class="text-center text-primary mt-5">NO FEEDBACKS</h1>
+    <h1 class="text-center text-primary animate__animated animate__swing">NO FEEDBACKS</h1>
+   <marquee scrollamount="17" behavior="" direction=""> <img src="https://i.pinimg.com/originals/5d/6d/ac/5d6dac450821b56d3119aefd7e100779.gif" alt=""></marquee>
+    
      <% } %> 
