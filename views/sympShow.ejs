@@ -1,5 +1,24 @@
 <% layout('layout/boilerplate.ejs') %>
 
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lemonada:wght@500&display=swap');
+  .card{
+  font-family: 'Hind Siliguri', sans-serif;
+  background: #24C6DC;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #514A9D, #24C6DC);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #514A9D, #24C6DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+ }
+ .card-text , .card h5{
+   color: cornsilk;
+ }
+ h2 a{
+   color:cornsilk;
+ }.event{
+  font-family: 'Lemonada', cursive;
+  color: rebeccapurple;
+ }
+ 
 </style>
 <link rel="stylesheet" href="/stylesheets/application.css">
 <div class="row mb-3">
@@ -27,13 +46,13 @@
 </div>
     <div class="row mb-5">
         <div class="col-md-6 offset-md-3">
-          <h1 class="card-title text-center display-2"><%=symp.title%></h1>
+          <h1 class="card-title text-center event display-2"><%=symp.title%></h1>
            </div>
            <div class="col-md-12 col-lg-6">
              <div class="card shadow">
                <div class="card-body">
                       <div class="card-body">
-                        <p class=" card-text font-monospace"><span class="text-primary display-6">DESCRIPTION AND GUIDELINES:</span> <br><%=symp.description%></p>
+                        <p class=" card-text font-monospace"><span class="text-light display-6">DESCRIPTION AND GUIDELINES:</span> <br><%=symp.description%></p>
                       </div>
                </div>
              </div>
@@ -48,13 +67,13 @@
                 </ul>
                 <div class="card-body ml-4">
                 <% if(currentUser && symp.author.equals(currentUser._id)){%>
-                  <a href="/events/<%=symp._id%>/new" class="btn btn-primary">ADD EVENT</a>
+                  <a href="/events/<%=symp._id%>/new" class="btn btn-light">ADD EVENT</a>
                   <form class="d-inline" action="/symposium/<%=symp._id%>?_method=DELETE" method="POST">
-                      <button class="btn btn-danger">Delete</button>
+                      <button class="btn btn-light">Delete</button>
                   </form>
                   <a href="/feedback/<%=symp._id%>/show">
                   <div class="card bg-c-blue order-card mt-3">
-                    <div class="card-block">
+                    <div class="card-block text-primary">
                         <h6 class="m-b-20">FEEDBACKS</h6>
                         <h2 class="text-right"><span class="value" akhi="<%=symp.feeds.length%>">0</span></h2>
                     </div>
@@ -68,7 +87,7 @@
             </div>
            </div>
            <% if(symp.events.length){%>
-            <h1 class="text-center text-primary display-3 mt-5">EVENTS</h1>
+            <h1 class="text-center event display-3 mt-5">EVENTS</h1>
             <% for(let event of symp.events) {%>
               
              <div class="row mt-5">
@@ -76,31 +95,30 @@
                  <div class="card shadow">
                    <img src="<%=event.image[0].url%>"   class="card-img-top" style="height: 300px;" alt="">
                    <div class="card-body">
-                         <h2 class="text-primary display-3 text-center"><%=event.title%></h2>
-                         <p class="card-text font-monospace"><span class="text-primary">RULES:</span><br><%=event.rules%></p>
+                         <h2 class="text-light display-3 text-center"><%=event.title%></h2>
+                         <p class="card-text font-monospace"><span class="text-light">RULES:</span><br><%=event.rules%></p>
                    </div>
                  </div>
                </div>
                <div class="col-md-12 col-lg-6">
                  <div class="card shadow">
                    <div class="card-body">
-                    <h5 class="text-uppercase"> <span class="text-primary"> SKILL:</span><%=event.skill%></h5>
-                    <h5 class="text-center text-primary">STUDENT INCHARGE</h3>
-                    <h5 class="text-uppercase"><span class="text-primary">NAME:</span><%=event.studentName%><h5>
+                    <h5 class="text-uppercase"> <span class="text-light"> SKILL:</span><%=event.skill%></h5>
+                    <h3 class="text-center text-light">STUDENT INCHARGE</h3>
+                    <h5 class="text-uppercase"><span class="text-light">NAME:</span><%=event.studentName%><h5>
                     <hr>
-                    <p><span class="text-primary">MOBILE No:</span><%=event.studentNumber%></p>
+                    <p><span class="text-light">MOBILE No:</span><%=event.studentNumber%></p>
                     <hr>
-                    <p><span class="text-primary ">Email:</span><%=event.studentMail%></p>
+                    <p><span class="text-light">Email:</span><%=event.studentMail%></p>
                     <% if(currentUser && symp.author.equals(currentUser._id)){%>
               
                    <form class="d-inline" action="/events/<%=event._id%>?_method=DELETE" method="POST">
-                    <button class="btn btn-danger">Delete</button>
+                    <button class="btn btn-light">Delete</button>
                     <a href="/forms/<%=event._id%>">
                       <div class="card bg-c-blue order-card mt-3">
-                          <div class="card-block">
+                          <div class="card-block text-primary">
                               <h6 class="m-b-20">STUDENTS APLLIED</h6>
                               <h2 class="text-right"><span class="value" akhi="<%=event.forms.length%>">0</span></h2>
-                             
                           </div>
                         </a>
                   </div>

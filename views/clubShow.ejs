@@ -1,5 +1,6 @@
 <% layout('layout/boilerplate.ejs') %>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@600&display=swap');
   marquee a {
     color: white;
     text-decoration: none;
@@ -8,13 +9,30 @@
     height: 50px;
     margin-bottom: 20px;
     letter-spacing :3px;
-  }
+    background: #77A1D3;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #E684AE, #79CBCA, #77A1D3);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #E684AE, #79CBCA, #77A1D3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+  }
+ .card{
+  font-family: 'Hind Siliguri', sans-serif;
+  background: #24C6DC;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #514A9D, #24C6DC);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #514A9D, #24C6DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+ }
+ .card-text , .card h5{
+   color: cornsilk;
+ }
+ h2 a{
+   color:cornsilk;
+ }
+ 
 </style>
 <link rel="stylesheet" href="/stylesheets/member.css">
 <% if(club.symposium.length){ %> 
   <% for(let symp of club.symposium){ %> 
-<marquee behavior="scroll" direction="left" scrollamount="12" class="bg-primary text-white d-flex align-items-center"><h2>Hey there! <a href="/symposium/<%=symp._id%>" ><%=symp.title%> </a>is live now ,Register ASAP!! </h2></marquee>
+<marquee behavior="scroll" direction="left" scrollamount="12" class=" text-white d-flex align-items-center"><h2>Hey there! <a href="/symposium/<%=symp._id%>" ><%=symp.title%> </a>is live now ,Register ASAP!! </h2></marquee>
 <%}%>
 <%}%>
 
@@ -45,16 +63,16 @@
           <div class="col-lg-12">
             <div class="card shadow">
               <div class="card-body">
-                     <p class="font-monospace card-text"><span class="text-center text-primary display-5">DESCRIPTION</span><br><%=club.description%></p>
+                     <p class="card-text"><span class="text-center text-white display-5">DESCRIPTION</span><br><%=club.description%></p>
                      <div class="card-body ">
                      <% if(currentUser && club.author.equals(currentUser._id) || (club.studentMail === currentUser.email) ){%>
                       <div class="card-body">
-                         <a href="/clubs/<%=club._id%>/edit" class="card-link btn btn-info p-1">Edit</a>
+                         <a href="/clubs/<%=club._id%>/edit" class="card-link btn btn-light p-1">Edit</a>
                          <form class="d-inline" action="/clubs/<%=club._id%>?_method=DELETE" method="POST">
-                             <button class="btn btn-danger p-1">Delete</button>
+                             <button class="btn btn-light p-1">Delete</button>
                          </form>
-                         <a href="/symposium/<%=club._id%>/new" class="card-link btn btn-success p-1">SYMPOSIUM</a>
-                         <a href="/members/<%=club._id%>" class="btn btn-warning p-1">MEMBERS</a>
+                         <a href="/symposium/<%=club._id%>/new" class="card-link btn btn-light p-1">SYMPOSIUM</a>
+                         <a href="/members/<%=club._id%>" class="btn btn-light p-1">MEMBERS</a>
                        </div>
                        <%}%>
                       </div>
@@ -64,13 +82,13 @@
           <div class="col-md-12 col-lg-6 mt-3">
               <div class="card shadow">
                 <div class="card-body">
-                  <h3 class="text-center text-primary">FACULTY INCHARGE</h3>
+                  <h3 class="text-center text-white">FACULTY INCHARGE</h3>
                  
-                  <h5> <span class="text-primary"> NAME:</span><%=club.facultyName%></h5>
+                  <h5> <span> NAME:</span><%=club.facultyName%></h5>
                   <hr>
-                  <h5> <span class="text-primary">MOBILE No:</span> <%=club.facultyNumber%></h5>
+                  <h5> <span>MOBILE No:</span> <%=club.facultyNumber%></h5>
                   <hr>
-                  <h5> <span class="text-primary">Email:</span> <%=club.facultyMail%></h5>
+                  <h5> <span >Email:</span> <%=club.facultyMail%></h5>
               
                 </div>
               </div>
@@ -78,12 +96,12 @@
           <div class="col-md-12 col-lg-6 mt-3">
             <div class="card shadow">
               <div class="card-body">
-                <h3 class="text-center text-primary">STUDENT INCHARGE</h3>
-                <h5> <span class="text-primary">NAME:</span><%=club.studentName%></h5>
+                <h3 class="text-center text-white">STUDENT INCHARGE</h3>
+                <h5> <span >NAME:</span><%=club.studentName%></h5>
                 <hr>
-                <h5> <span class="text-primary">MOBILE No:</span><%=club.studentNumber%></h5>
+                <h5> <span >MOBILE No:</span><%=club.studentNumber%></h5>
                 <hr>
-                <h5> <span class="text-primary">Email:</span><%=club.studentMail%></h5>
+                <h5> <span>Email:</span><%=club.studentMail%></h5>
               </div>
             </div>
           </div>
