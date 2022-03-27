@@ -124,6 +124,7 @@ background: linear-gradient(to right, #514A9D, #24C6DC); /* W3C, IE 10+/ Edge, F
                   </div>
                 </form>
                     <%}else{%>
+                      
                       <a href="/events/<%=event._id%>/register/" class="btn btn-light new">REGISTER</a>
                       <%}%>
                    </div>
@@ -151,7 +152,6 @@ counters.forEach( counter => {
           counter.innerText = value;
         }
    }
-   
    animate();
 });
 

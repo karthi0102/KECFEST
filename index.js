@@ -169,6 +169,7 @@ app.get('/symposium/:id',isLoggedIn,async(req,res)=>{
     const symp = await Symposium.findById(id).populate('author').populate("club").populate({path:'events',populate:{
         path:'forms'
     }})
+   
     res.render('sympShow',{symp})
 })
 
@@ -312,7 +313,6 @@ app.get('/logout',(req,res)=>{
     req.flash('success',"GOODBYE ");
     res.redirect('/');
 })
-
 app.all('*',(req,res,next) => {
     next(new ExpressError('Page Not Found',404))
 })
@@ -321,6 +321,7 @@ app.use((err,req,res,next) => {
     if(!err.message) err.message='something went wrong';
     res.status(statusCode).render('error.ejs',{err});
 })
+
 const port = process.env.PORT||8080
 app.listen(port,()=>{
     console.log(`Server is running on port ${port}`)
